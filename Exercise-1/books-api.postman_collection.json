@@ -1,0 +1,229 @@
+{
+  "info": {
+    "name": "Books API (Exercise-1)",
+    "description": "In-memory CRUD mini app built with Express. Start the server with npm start, then run these against http://localhost:3000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Get all books",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      }
+    },
+    {
+      "name": "2. Get a single book",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "2b. Get a book that does not exist - 404",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books/999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "999"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Add a new book",
+      "request": {
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Pragmatic Programmer\",\n  \"author\": \"Andrew Hunt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3b. Add a book with no author - 400",
+      "request": {
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"No Author Here\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3c. Add a book with no body at all - 400",
+      "request": {
+        "header": [],
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Update a book title",
+      "request": {
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Atomic Habits (Updated)\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Delete a book",
+      "request": {
+        "header": [],
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/books/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "2"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Bonus: search by author",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books/search",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "author",
+              "value": "James"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Bonus: search with no author - 400",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books/search",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "search"
+          ]
+        }
+      }
+    }
+  ]
+}
